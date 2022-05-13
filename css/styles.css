@@ -22,8 +22,13 @@ input {
 	padding: 4px 15px 4px 5px;
 }
 
+button:hover {
+	cursor: pointer;
+}
+
 #button {
 	display: inline-block;
+	border: none;
 	background-color:#fc999b;
 	color:#ffffff;
 	border-radius: 5px;
@@ -33,7 +38,6 @@ input {
 }
 
 #button:hover {
-	cursor: pointer;
 	opacity: .8;
 }
 
@@ -51,7 +55,7 @@ li:hover {
 	display: none;
 }
 
-li > crossOutButton {
+li > .cross-out-button {
 	background: none;
 	border: none;
 	float: right;
