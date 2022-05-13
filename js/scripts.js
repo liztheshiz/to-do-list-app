@@ -1,4 +1,4 @@
-/*
+/* NOTES FOR LATER USE
 $('input').each(function (i) {
 	let inputValue = $(this).val();
 	let inputName = $(this).attr('name');
@@ -9,7 +9,7 @@ $('input').each(function (i) {
 */
 
 function newItem() {
-	// 1. Add a new item to the list of items
+	// Add a new item to the list of items
 	let li = $('<li></li>');
 	let inputValue = $('#input').val();
 	li.append(inputValue);
@@ -17,29 +17,24 @@ function newItem() {
 	if (inputValue === '') {
 		alert('You must write something!');
 	} else {
-		let list = $('#list');
-		list.append(li);
+		$('#list').append(li);
 	}
 
-	// 2. Cross out an item from the list of items
-	function crossOut() {
-		li.addClass('strike');
-	}
+	// Cross out an item from the list of items
+	li.on('dblclick', function() {
+		li.toggleClass('strike');
+	});
 
-	li.on('dblclick', crossOut);
-
-	// 3(i). Add the delete button 'X'
+	// Add the delete button 'X'
 	let crossOutButton = $('<crossOutButton></crossOutButton>');
 	crossOutButton.append(document.createTextNode('X'));
 	li.append(crossOutButton);
 
-	// 3(ii). Add class .delete (display: none) from the css
-	function deleteListItem() {
+	// Delete list item when delete botton clicked
+	crossOutButton.on('click', function() {
 		li.addClass('delete');
-	}
+	});
 
-	crossOutButton.on('click', deleteListItem);
-
-	// 4. Reorder the items
+	// Allow list items to be sortable
 	$('#list').sortable();
 }
